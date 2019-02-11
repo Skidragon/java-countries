@@ -11,32 +11,32 @@ import java.util.ArrayList;
 public class CountryAgeController {
 
     @RequestMapping("/age")
-    public ArrayList<Country> getCountriesWithPopulationSize(@RequestParam(value="people") int population) {
+    public ArrayList<Country> getCountriesWithMedianAge(@RequestParam(value="age") int givenAge) {
         ArrayList<Country> newCountries = new ArrayList<>();
         CountrySearchApplication.myCountryList.countryList.forEach(c -> {
-            if(population <= c.getPopulation()) {
+            if(givenAge <= c.getMedianAge()) {
                 newCountries.add(c);
             }
         });
         return newCountries;
     }
     @RequestMapping("/min")
-    public Country getCountryWithSmallestPopulation() {
+    public Country getCountryWithSmallestAge() {
         int smallestIndex = 0;
         ArrayList<Country> countries = CountrySearchApplication.myCountryList.countryList;
         for(int i = 0; i < countries.size(); i++) {
-            if(countries.get(i).getPopulation() < countries.get(smallestIndex).getPopulation()) {
+            if(countries.get(i).getMedianAge() < countries.get(smallestIndex).getMedianAge()) {
                 smallestIndex = i;
             }
         }
         return countries.get(smallestIndex);
     }
     @RequestMapping("/max")
-    public Country getCountryWithLargestPopulation() {
+    public Country getCountryWithLargestAge() {
         int biggestIndex = 0;
         ArrayList<Country> countries = CountrySearchApplication.myCountryList.countryList;
         for(int i = 0; i < countries.size(); i++) {
-            if(countries.get(i).getPopulation() > countries.get(biggestIndex).getPopulation()) {
+            if(countries.get(i).getMedianAge() > countries.get(biggestIndex).getMedianAge()) {
                 biggestIndex = i;
             }
         }
