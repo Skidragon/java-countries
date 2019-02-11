@@ -18,6 +18,19 @@ public class Country {
         this.medianAge = medianAge;
     }
 
+    public Country (Country toClone)
+    {
+        this.id = toClone.getId();
+        this.name = toClone.getName();
+        this.population = toClone.getPopulation();
+        this.landMass = toClone.getLandMass();
+        this.medianAge = toClone.getMedianAge();
+    }
+
+    public long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
