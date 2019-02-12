@@ -20,17 +20,17 @@ public class CountryNameController {
     public ArrayList<Country> getCountriesWithStartingLetter(@RequestParam(value="letter") char letter) {
         ArrayList<Country> newCountries = new ArrayList<>();
         CountrySearchApplication.myCountryList.countryList.forEach(c -> {
-            if(letter == c.getName().charAt(0)) {
+            if(Character.toUpperCase(letter) == c.getName().charAt(0)) {
                 newCountries.add(c);
             }
         });
         return newCountries;
     }
     @RequestMapping("/size")
-    public ArrayList<Country> getCountriesByCharAmount(@RequestParam(value="letters") int charactersAmount) {
+    public ArrayList<Country> getCountriesWithStartingLetter(@RequestParam(value="letter") int charactersAmount) {
         ArrayList<Country> newCountries = new ArrayList<>();
         CountrySearchApplication.myCountryList.countryList.forEach(c -> {
-            if(charactersAmount <= c.getName().length()) {
+            if(charactersAmount == c.getName().length()) {
                 newCountries.add(c);
             }
         });
